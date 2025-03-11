@@ -1,0 +1,21 @@
+---
+import logo from "../assets/astro.svg"
+import MenuIcon from "./Icons/Menu.astro"
+---
+
+<header
+  class="bg-[#fff0de] w-full h-24 flex flex-row items-center justify-between p-10 sticky top-0 z-20 backdrop-blur-xl"
+  id="header"
+>
+  <MenuIcon class="size-9 block lg:hidden cursor-pointer text-black" />
+  <img src={logo.src} alt="Logo don mario" />
+
+  <nav
+    class="text-black hidden lg:flex font-bold flex-row gap-x-5 w-full justify-center"
+  >
+    <a href="#">Inicio</a>
+    <a href="#">Conócenos</a>
+    <a href="#">Productos</a>
+    <a href="#">Contáctanos</a>
+  </nav>
+</header>

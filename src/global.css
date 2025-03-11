@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+@import "tailwindcss";
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Comfortaa", sans-serif;
+}
+
+body {
+  background-color: var(--color-brown-600);
+  color:  #fff0de;
+}
+
+@font-face {
+  font-family: 'babyfont';
+  src: url('/public/fonts/babyfont.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+
+  --font-baby: 'babyfont', 'Comfortaa', sans-serif;
+
+  
+
+  --color-brown-100: #fdfbf9;
+  --color-brown-200: #fbeede;
+  --color-brown-300: #f2d0a8;
+  --color-brown-400: #e6b57a;
+  --color-brown-500: #c48d4c;
+  --color-brown-600: #553813;
+
+  --color-gold-100: #fef9e7;
+  --color-gold-200: #fde9b8;
+  --color-gold-300: #fbd678;
+  --color-gold-400: #f7c53f;
+  --color-gold-500: #f4b71e;
+  --color-gold-600: #c98f12;
+
+  --color-green-100: #eaf6eb;
+  --color-green-200: #bde2c1;
+  --color-green-300: #7fc98b;
+  --color-green-400: #4fae5e;
+  --color-green-500: #308334; /* Color principal */
+  --color-green-600: #1f5d24;
+
+}
+

@@ -1,22 +1,42 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+interface Props {
+  title: string
+}
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+  <html lang="es">
+    <head>
+      <meta charset="UTF-8" />
+      <meta
+        name="description"
+        content="Tiendas Don Mario, la mejor tienda de fruver en la ciudad"
+      />
+      <meta name="viewport" content="width=device-width" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <meta name="og:title" content={title} />
+      <meta
+        name="og:description"
+        content="Tiendas Don Mario, la mejor tienda de fruver en la ciudad"
+      />
+      <meta name="og:image" content="https://aprendiendogit.com/og.png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@midudev" />
+      <meta name="twitter:creator" content="@midudev" />
+      <meta name="twitter:title" content={title} />
+      <meta
+        name="twitter:description"
+        content="Tiendas Don Mario, la mejor tienda de fruver en la ciudad"
+      />
+      <meta name="twitter:image" content="https://aprendiendogit.com/og.png" />
+      <title>{title}</title>
+    </head>
+
+    <body>
+      <slot />
+    </body>
+  </html>
+</html>

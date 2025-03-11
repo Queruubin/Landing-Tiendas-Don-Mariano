@@ -1,0 +1,65 @@
+---
+import CardAbout from "../components/CardAbout.astro"
+import Vegetables from "../components/Icons/Vegetables.astro"
+import GreenFlag from "../components/Icons/GreenFlag.astro"
+---
+
+<section
+  class="h-full
+  flex flex-row
+  flex-wrap
+  bg-brown-600
+  px-3 py-5
+  md:px-5
+   text-white
+  justify-center
+  gap-y-10 gap-x-5"
+>
+  <div class="gap-y-4 flex flex-col w-full md:w-[600px] md:py-10">
+    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-4xl">
+      Nuestra Historia
+    </h2>
+    <p
+      class="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+    >
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptas
+      tempora, quas ratione quia excepturi deserunt qui sunt nihil facilis
+      consectetur assumenda consequatur, vero porro accusamus omnis repellendus,
+      sapiente illo?
+    </p>
+  </div>
+
+  <div class="flex flex-col flex-wrap gap-y-9 md:px-10 text-sm md:text-base">
+    <CardAbout>
+      <div>
+        <Vegetables class="size-12" />
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptas
+        tempora, quas ratione quia excepturi deserunt qui sunt nihil facilis
+        consectetur assumenda consequatur, vero porro accusamus omnis
+        repellendus, sapiente illo?
+      </p>
+    </CardAbout>
+    <CardAbout>
+      <div>
+        <GreenFlag class="size-12" />
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptas
+        tempora, quas ratione quia excepturi deserunt qui sunt nihil facilis
+        consectetur assumenda consequatur, vero porro accusamus omnis
+        repellendus, sapiente illo?
+      </p>
+    </CardAbout>
+    <!-- <CardAbout>
+      <img src={MisionIcon.src} class="size-20" />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptas
+        tempora, quas ratione quia excepturi deserunt qui sunt nihil facilis
+        consectetur assumenda consequatur, vero porro accusamus omnis
+        repellendus, sapiente illo?
+      </p>
+    </CardAbout> -->
+  </div>
+</section>
