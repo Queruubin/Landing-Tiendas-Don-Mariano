@@ -19,6 +19,23 @@ body {
   font-style: normal;
 }
 
+@keyframes loop-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-loop-scroll {
+  animation: loop-scroll 50s linear infinite;
+}
+
+.continaerActions {
+  @apply flex flex-col items-center justify-center gap-4 rounded-full h-fit w-fit p-10;
+}
+
 @theme {
 
   --font-baby: 'babyfont', 'Comfortaa', sans-serif;

@@ -1,0 +1,58 @@
+---
+import Market from "../components/Icons/Market.astro";
+import Shield from "../components/Icons/Shield.astro";
+import Truck from "../components/Icons/Truck.astro";
+const features = [
+  {
+    icon: Shield,
+    title: "Garantía de Calidad",
+    description:
+      "Nada de aguacates duros como una piedra. Le mandamos el que necesite, verde, maduro o pintón.",
+    color: "bg-amber-800",
+  },
+  {
+    icon: Market,
+    title: "Múltiples Ubicaciones",
+    description:
+      "El mercado que enviamos a domicilio es el mejor, no lo más fácil ni lo que va de salida.",
+    color: "bg-green-700",
+  },
+  {
+    icon: Truck,
+    title: "Entrega a Domicilio",
+    description: "Si pidió plátano maduro, no le llega verde. Así de sencillo.",
+    color: "bg-amber-600",
+  },
+];
+---
+
+<section class="py-16 px-4 md:px-6 bg-gradient-to-r from-green-50 to-amber-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-gray-900 mb-4">¿Por qué elegirnos?</h3>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Más de 15 años llevando la mejor calidad a los hogares colombianos
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        features.map((feature) => (
+          <div class="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white">
+            <div class="p-8 text-center">
+              <div
+                class={`w-16 h-16 ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
+              >
+                <feature.icon class="w-8 h-8 text-white fill-current" />
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 mb-4">
+                {feature.title}
+              </h4>
+              <p class="text-gray-600 leading-relaxed">{feature.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
