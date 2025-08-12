@@ -36,9 +36,9 @@ body {
   @apply flex flex-col items-center justify-center gap-4 rounded-full h-fit w-fit p-10;
 }
 
-html {
+/* html {
   scroll-behavior: smooth;
-}
+} */
 
 @theme {
 
