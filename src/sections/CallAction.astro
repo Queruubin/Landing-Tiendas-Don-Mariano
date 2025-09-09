@@ -28,7 +28,7 @@ const locations = [
     name: "Salitre",
     code: "601631896",
     phone: "3217869027",
-    color: "bg-brown-600 hover:bg-brown-500",
+    color: "bg-brown-600 hover:bg-brown-700",
     textColor: "text-white",
   },
 ];
@@ -85,10 +85,11 @@ const locations = [
             locations.map((location, index) => (
               <div class="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div class={`p-0 ${location.color} ${location.textColor}`}>
-                  <button
+                  <a
+                    href={`tel:${location.phone}`}
                     class={`w-full h-full p-6 ${location.textColor} hover:bg-transparent justify-start text-left`}
                   >
-                    <div class="space-y-2 w-full">
+                    <div class="space-y-2 w-full py-1 px-2">
                       <div class="flex items-center gap-2">
                         <Location class="h-4 w-4" />
                         <span class="font-semibold text-sm">
@@ -105,7 +106,7 @@ const locations = [
                         </div>
                       </div>
                     </div>
-                  </button>
+                  </a>
                 </div>
               </div>
             ))
