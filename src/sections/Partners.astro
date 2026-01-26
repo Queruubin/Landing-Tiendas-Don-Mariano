@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 const logos = [
   "/nutresa.webp",
   "/alpina.webp",
@@ -21,9 +22,11 @@ const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
   <div class="relative w-full flex items-center">
     <div class="flex gap-12 animate-loop-scroll items-center min-w-max">
       {
-        duplicatedLogos.map((src, index) => (
-          <img
-            src={src}
+        duplicatedLogos.map((image, index) => (
+          <Image
+            src={image}
+            width={100}
+            height={100}
             alt="Logo"
             class="h-24 w-40 object-contain max-w-none"
             aria-hidden={index >= logos.length ? "true" : "false"}

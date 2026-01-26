@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import logo from "../assets/logo_letter.png";
 import MenuIcon from "./Icons/Menu.astro";
 ---
@@ -7,15 +8,158 @@ import MenuIcon from "./Icons/Menu.astro";
   class="bg-[#fff0de] w-full h-28 flex flex-row items-center justify-between p-10 sticky top-0 z-20 backdrop-blur-xl"
   id="header"
 >
-  <MenuIcon class="size-9 block lg:hidden cursor-pointer text-black" />
-  <img src={logo.src} alt="Logo don mario" class="w-[140px] h-[110px]" />
+  <button
+    id="mobile-menu-button"
+    class="size-9 block lg:hidden cursor-pointer text-black"
+    aria-label="Abrir menú"
+  >
+    <MenuIcon class="size-9" />
+  </button>
+
+  <Image
+    src={logo}
+    width={140}
+    height={110}
+    alt="Logo don mario"
+    class="w-[140px] h-[110px]"
+  />
 
   <nav
     class="text-black xl:text-lg hidden lg:flex font-bold flex-row gap-x-10 w-full justify-center"
   >
     <a href="#">Inicio</a>
     <a href="#Conocenos">Conócenos</a>
-    <!-- <a href="#Products">Productos</a> -->
     <a href="#Contact">Contáctanos</a>
   </nav>
+
+  <a
+    class="bg-gold-500 text-black
+    px-4 py-2 rounded-md font-bold
+    hover:bg-gold-600 w-40
+    text-center
+    transition-colors duration-300 hidden lg:block
+    cursor-pointer
+    text-sm"
+    href="#Conocenos"
+  >
+    Pedir ahora
+  </a>
 </header>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 lg:hidden opacity-0 pointer-events-none transition-opacity duration-300"
+>
+  <div
+    id="mobile-menu-panel"
+    class="fixed top-0 right-0 h-full w-[280px] bg-[#fff0de] shadow-2xl transform translate-x-full transition-transform duration-300"
+  >
+    <!-- Header del menú móvil -->
+    <div class="flex items-center justify-between p-6 border-b border-gray-300">
+      <h2 class="text-xl font-bold text-gray-900">Menú</h2>
+      <button
+        id="mobile-menu-close"
+        class="size-8 flex items-center justify-center text-gray-700 hover:text-gray-900"
+        aria-label="Cerrar menú"
+      >
+        <svg
+          class="size-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Links de navegación -->
+    <nav class="flex flex-col p-6 space-y-4">
+      <a
+        href="#"
+        class="text-lg font-bold text-gray-900 hover:text-gold-500 transition-colors py-2 border-b border-gray-200"
+      >
+        Inicio
+      </a>
+      <a
+        href="#Conocenos"
+        class="text-lg font-bold text-gray-900 hover:text-gold-500 transition-colors py-2 border-b border-gray-200 mobile-menu-link"
+      >
+        Conócenos
+      </a>
+      <a
+        href="#Reviews"
+        class="text-lg font-bold text-gray-900 hover:text-gold-500 transition-colors py-2 border-b border-gray-200 mobile-menu-link"
+      >
+        Reseñas
+      </a>
+      <a
+        href="#Contact"
+        class="text-lg font-bold text-gray-900 hover:text-gold-500 transition-colors py-2 border-b border-gray-200 mobile-menu-link"
+      >
+        Contáctanos
+      </a>
+
+      <!-- CTA Button -->
+      <a
+        href="#Conocenos"
+        class="bg-gold-500 text-black px-6 py-3 rounded-md font-bold hover:bg-gold-600 text-center transition-colors duration-300 mt-4 mobile-menu-link"
+      >
+        Pedir ahora
+      </a>
+    </nav>
+  </div>
+</div>
+
+<script>
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenuPanel = document.getElementById("mobile-menu-panel");
+  const mobileMenuClose = document.getElementById("mobile-menu-close");
+  const mobileMenuLinks = document.querySelectorAll(".mobile-menu-link");
+
+  function openMenu() {
+    mobileMenu?.classList.remove("opacity-0", "pointer-events-none");
+    mobileMenu?.classList.add("opacity-100");
+    mobileMenuPanel?.classList.remove("translate-x-full");
+    document.body.style.overflow = "hidden"; // Prevent scrolling
+  }
+
+  function closeMenu() {
+    mobileMenu?.classList.add("opacity-0", "pointer-events-none");
+    mobileMenu?.classList.remove("opacity-100");
+    mobileMenuPanel?.classList.add("translate-x-full");
+    document.body.style.overflow = ""; // Restore scrolling
+  }
+
+  // Open menu
+  mobileMenuButton?.addEventListener("click", openMenu);
+
+  // Close menu
+  mobileMenuClose?.addEventListener("click", closeMenu);
+
+  // Close when clicking outside
+  mobileMenu?.addEventListener("click", (e) => {
+    if (e.target === mobileMenu) {
+      closeMenu();
+    }
+  });
+
+  // Close when clicking a link
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Close on ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMenu();
+    }
+  });
+</script>

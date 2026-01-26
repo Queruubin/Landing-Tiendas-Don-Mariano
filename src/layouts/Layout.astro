@@ -1,42 +1,113 @@
 ---
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "Don Mariano - Supermercado de barrio en Bogotá. Frutas, verduras frescas y domicilios. Calidad como si usted mismo lo hubiera escogido. Encuentra tu tienda más cercana.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/og-image.png", Astro.site); // Necesitarás crear esta imagen
 ---
 
 <!doctype html>
-<html lang="es">
-  <html lang="es">
-    <head>
-      <meta charset="UTF-8" />
-      <meta
-        name="description"
-        content="Tiendas Don Mario, la mejor tienda de fruver en la ciudad"
-      />
-      <meta name="viewport" content="width=device-width" />
-      <link rel="icon" type="image/svg+xml" href="/LogoDon.png" />
-      <meta name="og:title" content={title} />
-      <meta
-        name="og:description"
-        content="Tiendas Don Mario, la mejor tienda de fruver en la ciudad"
-      />
-      <meta name="og:image" content="https://aprendiendogit.com/og.png" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@midudev" />
-      <meta name="twitter:creator" content="@midudev" />
-      <meta name="twitter:title" content={title} />
-      <meta
-        name="twitter:description"
-        content="Tiendas Don Mario, la mejor tienda de fruver en la ciudad"
-      />
-      <meta name="twitter:image" content="https://aprendiendogit.com/og.png" />
-      <title>{title}</title>
-    </head>
+<html lang="es-CO">
+  <head>
+    <!-- Meta Tags Básicos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="supermercado bogotá, frutas frescas, verduras, domicilios, Don Mariano, fruver, mercado de barrio, Cedritos, calidad, productos frescos"
+    />
+    <meta name="author" content="Tiendas Don Mariano" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
 
-    <body>
-      <slot />
-    </body>
-  </html>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/LogoDon.png" />
+    <link rel="apple-touch-icon" href="/LogoDon.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Tiendas Don Mariano" />
+    <meta property="og:locale" content="es_CO" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Title -->
+    <title>{title}</title>
+
+    <!-- Schema.org LocalBusiness JSON-LD -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "Tiendas Don Mariano",
+        image: ogImage.toString(),
+        description:
+          "Supermercado de barrio en Bogotá con las mejores frutas y verduras frescas. Atención personalizada y domicilios.",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Bogotá",
+          addressRegion: "Cundinamarca",
+          addressCountry: "CO",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "4.7110",
+          longitude: "-74.0721",
+        },
+        url: canonicalURL.toString(),
+        telephone: "+57-XXX-XXX-XXXX",
+        priceRange: "$$",
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
+            opens: "07:00",
+            closes: "20:00",
+          },
+        ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "500",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        servesCuisine: "Frutas y Verduras",
+        paymentAccepted: "Cash, Credit Card, Debit Card",
+        currenciesAccepted: "COP",
+      })}
+    />
+  </head>
+
+  <body>
+    <slot />
+  </body>
 </html>

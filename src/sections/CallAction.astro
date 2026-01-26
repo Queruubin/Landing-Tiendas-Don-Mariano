@@ -1,6 +1,9 @@
 ---
+import Image from "astro/components/Image.astro";
 import Location from "../components/Icons/Location.astro";
 import Phone from "../components/Icons/Phone.astro";
+import WhatsApp from "../components/Icons/WhatsApp.astro";
+import teamDonMariano from "../assets/team-don-mariano.jpeg";
 
 const locations = [
   {
@@ -40,8 +43,8 @@ const locations = [
       {/* Image Section */}
       <div class="relative">
         <div class="relative overflow-hidden rounded-2xl shadow-2xl">
-          <img
-            src="/Foto_Super.jpg"
+          <Image
+            src={teamDonMariano}
             alt="Fresh fruits and vegetables at local market"
             width={600}
             height={400}
@@ -52,24 +55,15 @@ const locations = [
           >
           </div>
         </div>
-        {/* Floating badge */}
-        <div
-          class="absolute -bottom-6 -right-3 md:-right-6 bg-white rounded-full p-4 shadow-lg"
-        >
-          <div class="text-center">
-            <div class="text-2xl font-bold text-green-600">100%</div>
-            <div class="text-xs text-gray-600">Fresco</div>
-          </div>
-        </div>
       </div>
 
       {/* Content Section */}
       <div class="space-y-8">
         <div class="space-y-4">
           <h2
-            class="text-4xl lg:text-5xl font-bold text-gray-800 leading-tight"
+            class="text-4xl lg:text-4xl font-bold text-gray-800 leading-tight"
           >
-            Pide domicilio en tu <span class="text-green-500"
+            Pide domicilio en el <span class="text-green-500"
               >punto más cercano</span
             >
           </h2>
@@ -83,13 +77,14 @@ const locations = [
         <div class="grid sm:grid-cols-2 gap-4">
           {
             locations.map((location, index) => (
-              <div class="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div class={`p-0 ${location.color} ${location.textColor}`}>
-                  <a
-                    href={`tel:${location.phone}`}
-                    class={`w-full h-full p-6 ${location.textColor} hover:bg-transparent justify-start text-left`}
+              <div class="rounded-lg overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div
+                  class={`p-0 h-full ${location.color} ${location.textColor}`}
+                >
+                  <section
+                    class={`w-full h-full p-6 ${location.textColor} hover:bg-transparent text-left`}
                   >
-                    <div class="space-y-2 w-full py-1 px-2">
+                    <div class="space-y-2 w-full h-full flex flex-col justify-between py-1 px-2">
                       <div class="flex items-center gap-2">
                         <Location class="h-4 w-4" />
                         <span class="font-semibold text-sm">
@@ -97,16 +92,26 @@ const locations = [
                         </span>
                       </div>
                       <div class="flex items-center gap-2">
-                        <Phone class="size-5" />
+                        <Phone class="size-5 fill-current stroke-current stroke-1 text-yellow-500" />
                         <div class="space-y-1">
-                          <div class="text-sm opacity-90 font-bold">
-                            {location.code}
-                          </div>
                           <div class="font-bold">{location.phone}</div>
                         </div>
                       </div>
+                      <a
+                        href={`https://wa.me/${location.phone}?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20la%20tienda%20Don%20Mariano%20ubicada%20en%20${location.name}.`}
+                        class="
+                        flex items-center gap-2 justify-center
+                        bg-gold-400 rounded-2xl text-center
+                        px-4 py-2 mt-4 text-sm font-semibold
+                        text-black
+                        hover:bg-gold-600 
+                        transition-colors duration-300"
+                      >
+                        <WhatsApp class="size-4 text-black fill-current" />
+                        WhatsApp
+                      </a>
                     </div>
-                  </a>
+                  </section>
                 </div>
               </div>
             ))

@@ -1,12 +1,49 @@
 ---
+// Importar las imágenes de frutas
+import { Image } from "astro:assets";
+import fruta1 from "../assets/Frutas_Tienda/WhatsApp Image 2025-11-12 at 7.41.57 PM.jpeg";
+import fruta2 from "../assets/Frutas_Tienda/WhatsApp Image 2025-11-12 at 7.41.58 PM.jpeg";
+import fruta3 from "../assets/Frutas_Tienda/frutas3.jpeg";
+import fruta4 from "../assets/Frutas_Tienda/frutas4.jpeg";
+import fruta5 from "../assets/Frutas_Tienda/frutas5.jpeg";
+import fruta6 from "../assets/Frutas_Tienda/frutas6.jpeg";
 
+const carouselImages = [fruta1, fruta2, fruta3, fruta4, fruta5, fruta6];
 ---
 
 <section
-  class="background h-[calc(100vh-96px)] flex items-center justify-center"
+  class="relative h-[calc(100vh-96px)] flex items-center justify-center overflow-hidden"
 >
+  <!-- Carousel Container -->
+  <div class="absolute inset-0">
+    <div class="carousel-container w-full h-full">
+      {
+        carouselImages.map((image, index) => (
+          <div
+            class={`carousel-slide absolute inset-0 transition-opacity duration-1000 ${index === 0 ? "opacity-100" : "opacity-0"}`}
+            data-slide-index={index}
+          >
+            <Image
+              src={image}
+              alt={`Frutas Don Mariano ${index + 1}`}
+              class="w-full h-full object-cover"
+              width={1920}
+              height={1080}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Overlay oscuro -->
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+
+  <!-- Contenido Text -->
   <div class="relative z-10 text-center px-6">
-    <h1 class="text-7xl lg:text-8xl text-white font-bold !font-baby">
+    <h1
+      class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white font-bold !font-baby"
+    >
       Don Mariano
     </h1>
     <p
@@ -19,20 +56,36 @@
     </p>
     <a
       href="#Contact"
-      class="mt-6 inline-block bg-brown-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-brown-700 transition"
+      class="mt-6 inline-block bg-yellow-400 text-black font-semibold py-3 px-6 rounded-lg hover:bg-yellow-500 transition"
     >
       Encuentra tu tienda más cercana
     </a>
   </div>
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
 </section>
 
-<style>
-  .background {
-    background-image: url("../assets/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    backdrop-filter: blur(10px);
+<script>
+  // Auto-carousel functionality
+  const slides = document.querySelectorAll(".carousel-slide");
+  let currentSlide = 0;
+  const slideInterval = 4000; // 4 segundos entre transiciones
+
+  function showSlide(index: number) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.remove("opacity-0");
+        slide.classList.add("opacity-100");
+      } else {
+        slide.classList.remove("opacity-100");
+        slide.classList.add("opacity-0");
+      }
+    });
   }
-</style>
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Iniciar el carousel automático
+  setInterval(nextSlide, slideInterval);
+</script>

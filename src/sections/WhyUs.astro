@@ -2,48 +2,56 @@
 import Market from "../components/Icons/Market.astro";
 import Shield from "../components/Icons/Shield.astro";
 import Truck from "../components/Icons/Truck.astro";
+import WhatsApp from "../components/Icons/WhatsApp.astro";
 const features = [
   {
     icon: Shield,
-    title: "Garantía de Calidad",
+    title: "Enviamos lo que pides",
     description:
-      "Nada de aguacates duros como una piedra. Le mandamos el que necesite, verde, maduro o pintón.",
+      "Si pidió un producto maduro, no le llega verde. Así de sencillo.",
     color: "bg-brown-600",
   },
   {
     icon: Market,
-    title: "Múltiples Ubicaciones",
-    description:
-      "El mercado que enviamos a domicilio es el mejor, no lo más fácil ni lo que va de salida.",
+    title: "Producto con garantía",
+    description: "Lo que no llegó como querías lo cambiamos sin procesos.",
     color: "bg-green-500",
   },
   {
+    icon: WhatsApp,
+    title: "Entrega Rápida",
+    description: "Pide por Whatsapp, llega rapidito",
+    color: "bg-gold-500",
+  },
+  {
     icon: Truck,
-    title: "Entrega a Domicilio",
-    description: "Si pidió plátano maduro, no le llega verde. Así de sencillo.",
+    title: "Cerca de ti",
+    description: "5 ubicaciones en Bogotá.",
     color: "bg-gold-500",
   },
 ];
 ---
 
-<section class="py-16 px-4 md:px-6 bg-gradient-to-r from-green-50 to-amber-50">
+<section class="py-16 px-4 md:px-6 bg-gradient-to-r bg-[#FBF8EF]">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-12">
-      <h3 class="text-3xl font-bold text-gray-900 mb-4">¿Por qué elegirnos?</h3>
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">
+        ¿Por qué elegir Don Mariano?
+      </h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
         Más de 15 años llevando la mejor calidad a los hogares colombianos
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-x-1 gap-y-8">
       {
         features.map((feature) => (
-          <div class="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white">
+          <div>
             <div class="p-8 text-center">
               <div
-                class={`w-16 h-16 ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                class={`w-16 h-16 rounded-full bg-[#F8EED8] flex items-center justify-center mx-auto mb-6`}
               >
-                <feature.icon class="w-8 h-8 text-white fill-current" />
+                <feature.icon class="w-8 h-8 text-[#CF9004] fill-current" />
               </div>
               <h4 class="text-xl font-bold text-gray-900 mb-4">
                 {feature.title}

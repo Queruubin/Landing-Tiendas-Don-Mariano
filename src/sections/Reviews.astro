@@ -1,0 +1,111 @@
+---
+// Sección de Reviews de clientes con nuevo diseño
+const reviews = [
+  {
+    name: "Cliente Satisfecho",
+    initial: "C",
+    review: "Los Paisitas de Belmira, venden las mejores frutas y verduras de Cedritos y lo mejor es el servicio.",
+    stars: 5,
+    color: "bg-orange-200 text-orange-700"
+  },
+  {
+    name: "Cliente Frecuente",
+    initial: "C",
+    review: "Servicio amable, tienen frutas y verduras frescas.",
+    stars: 5,
+    color: "bg-orange-200 text-orange-700"
+  },
+  {
+    name: "Familia Colombiana",
+    initial: "F",
+    review: "Profesionales, calidad humana, calidad en productos; siempre atienden en pro del bienestar del cliente, realmente confío que sus productos son de alta calidad y eso lo es todo para cuide de mi familia. Gracias!",
+    stars: 5,
+    color: "bg-orange-200 text-orange-700"
+  },
+  {
+    name: "Vecino del Barrio",
+    initial: "V",
+    review: "El mejor supermercado de la zona, los productos excelente calidad y lo mejor la atención de personal, súper recomendado.",
+    stars: 5,
+    color: "bg-purple-200 text-purple-700"
+  },
+  {
+    name: "Cliente Leal",
+    initial: "C",
+    review: "Productos frescos y de calidad. La atención al cliente es cordial, amable y todo el equipo humano siempre está dispuesto a ayudar de forma presencial o a través de los domicilios!!",
+    stars: 5,
+    color: "bg-orange-200 text-orange-700"
+  },
+  {
+    name: "Cliente Fiel",
+    initial: "C",
+    review: "El mejor supermercado de Cedritos!!. Tienen vegetales y frutas de excelente calidad, innovan en los productos, allí he comprado algunos vegetales que nunca he visto en supermercados de renombre. Atentos siempre a despachar rápidamente los domicilios! Y lo mejor de todo es la atención de todos sus colaboradores. Mis chinitos lo máximo!",
+    stars: 5,
+    color: "bg-orange-200 text-orange-700"
+  }
+];
+---
+
+<section class="py-16 px-6 bg-[#f5f1e8]" id="Reviews">
+  <div class="max-w-7xl mx-auto">
+    <!-- Título y Subtítulo -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-4xl font-bold text-[#c97a3a] mb-4">
+        Lo Que Dicen <br class="md:hidden" />Nuestros Clientes
+      </h2>
+      <p class="text-base md:text-lg text-gray-700 max-w-2xl mx-auto">
+        Miles de familias colombianas confían en nosotros para sus compras diarias
+      </p>
+    </div>
+
+    <!-- Grid de Reviews -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      {reviews.map((review) => (
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 relative">
+          <!-- Comillas decorativas grandes como watermark -->
+          <div class="absolute top-4 right-6 text-[#f5f1e8] text-7xl font-serif leading-none select-none pointer-events-none">
+            "
+          </div>
+
+          <!-- Estrellas -->
+          <div class="flex gap-1 mb-4 relative z-10">
+            {Array.from({ length: review.stars }).map(() => (
+              <svg class="w-5 h-5 text-yellow-500 fill-current" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+              </svg>
+            ))}
+          </div>
+
+          <!-- Texto del Review -->
+          <p class="text-gray-700 text-sm md:text-base mb-6 leading-relaxed min-h-[100px] relative z-10">
+            "{review.review}"
+          </p>
+
+          <!-- Avatar y Nombre del Cliente -->
+          <div class="flex items-center gap-3 pt-4 border-t relative z-10">
+            <div class={`w-10 h-10 rounded-full ${review.color} flex items-center justify-center font-bold text-lg`}>
+              {review.initial}
+            </div>
+            <p class="text-gray-800 text-sm font-medium">
+              {review.name}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Rating promedio -->
+    <div class="text-center pt-6">
+      <div class="flex items-center justify-center gap-2 mb-2">
+        {Array.from({ length: 5 }).map(() => (
+          <svg class="w-6 h-6 text-yellow-500 fill-current" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+          </svg>
+        ))}
+      </div>
+      <p class="text-gray-700 text-base">
+        <span class="font-bold text-lg">4.9/5</span> basado en más de 500 reseñas
+      </p>
+    </div>
+  </div>
+</section>
