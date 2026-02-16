@@ -17,11 +17,11 @@ const locations = [
     name: "Calle 151 - Cedritos",
     code: "6013004697",
     phone: "3143993912",
-    color: "bg-gold-500 hover:bg-amber-500",
-    textColor: "text-amber-900",
+    color: "bg-gold-500 hover:bg-gold-600",
+    textColor: "text-white",
   },
   {
-    name: "CRA 7 CON 45 - JAVERIANA",
+    name: "Cra 7 Con 45 - Javeriana",
     code: "601631894",
     phone: "3108005068",
     color: "bg-stone-200 hover:bg-stone-300",
@@ -34,10 +34,20 @@ const locations = [
     color: "bg-brown-600 hover:bg-brown-700",
     textColor: "text-white",
   },
+  {
+    name: "Calle 18 - Milenta",
+    code: "601631896",
+    phone: "3133521795",
+    color: "bg-green-500 hover:bg-green-600",
+    textColor: "text-white",
+  },
 ];
 ---
 
-<section class="w-full bg-gradient-to-br from-gold-100 to-brown-100 py-16 px-4">
+<section
+  class="w-full bg-gradient-to-br from-gold-100 to-brown-100 py-16 px-3 md:px-0"
+  id="call"
+>
   <div class="container mx-auto max-w-7xl">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       {/* Image Section */}
@@ -45,7 +55,7 @@ const locations = [
         <div class="relative overflow-hidden rounded-2xl shadow-2xl">
           <Image
             src={teamDonMariano}
-            alt="Fresh fruits and vegetables at local market"
+            alt="Equipo de trabajo Tiendas Don Mariano - Supermercado de barrio en Bogotá"
             width={600}
             height={400}
             class="w-full h-[400px] object-cover"
@@ -61,7 +71,7 @@ const locations = [
       <div class="space-y-8">
         <div class="space-y-4">
           <h2
-            class="text-4xl lg:text-4xl font-bold text-gray-800 leading-tight"
+            class="text-3xl lg:text-4xl font-bold text-gray-800 leading-tight"
           >
             Pide domicilio en el <span class="text-green-500"
               >punto más cercano</span
@@ -74,10 +84,12 @@ const locations = [
         </div>
 
         {/* Location Cards */}
-        <div class="grid sm:grid-cols-2 gap-4">
+        <div
+          class="grid sm:grid-cols-3 gap-4 justify-items-center sm:justify-items-start lg:justify-items-center"
+        >
           {
             locations.map((location, index) => (
-              <div class="rounded-lg overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div class="rounded-lg overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto">
                 <div
                   class={`p-0 h-full ${location.color} ${location.textColor}`}
                 >
@@ -92,22 +104,29 @@ const locations = [
                         </span>
                       </div>
                       <div class="flex items-center gap-2">
-                        <Phone class="size-5 fill-current stroke-current stroke-1 text-yellow-500" />
+                        <Phone
+                          class={`size-5 fill-current stroke-current stroke-1 ${location.name.includes("Cedritos") ? "text-brown-600" : "text-yellow-500"}`}
+                        />
                         <div class="space-y-1">
                           <div class="font-bold">{location.phone}</div>
                         </div>
                       </div>
                       <a
                         href={`https://wa.me/${location.phone}?text=Hola,%20quiero%20hacer%20un%20pedido%20en%20la%20tienda%20Don%20Mariano%20ubicada%20en%20${location.name}.`}
-                        class="
-                        flex items-center gap-2 justify-center
-                        bg-gold-400 rounded-2xl text-center
-                        px-4 py-2 mt-4 text-sm font-semibold
-                        text-black
-                        hover:bg-gold-600 
-                        transition-colors duration-300"
+                        class={`
+            flex items-center gap-2 justify-center
+            rounded-2xl text-center
+            px-4 py-2 mt-4 text-sm font-semibold
+            transition-colors duration-300
+            ${
+              location.name.includes("Cedritos")
+                ? "bg-yellow-500 border-1 border-brown-600 text-black"
+                : "bg-yellow-400 hover:bg-yellow-600 text-black"
+            }`}
                       >
-                        <WhatsApp class="size-4 text-black fill-current" />
+                        <WhatsApp
+                          class={`size-4 ${location.name.includes("Cedritos") ? "text-black" : "text-black"} fill-current`}
+                        />
                         WhatsApp
                       </a>
                     </div>

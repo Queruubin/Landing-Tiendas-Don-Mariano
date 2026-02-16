@@ -6,11 +6,11 @@ interface Props {
 
 const {
   title,
-  description = "Don Mariano - Supermercado de barrio en Bogotá. Frutas, verduras frescas y domicilios. Calidad como si usted mismo lo hubiera escogido. Encuentra tu tienda más cercana.",
+  description = "Tiendas Don Mariano - Supermercado de barrio en Bogotá. Frutas, verduras frescas, productos de calidad y domicilios rápidos. 5 sedes: Cedritos, Belmira, Javeriana, Salitre y Milenta. ¡Pide por WhatsApp!",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL("/og-image.png", Astro.site); // Necesitarás crear esta imagen
+const ogImage = new URL("/og-image.png", Astro.site);
 ---
 
 <!doctype html>
@@ -22,15 +22,29 @@ const ogImage = new URL("/og-image.png", Astro.site); // Necesitarás crear esta
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="supermercado bogotá, frutas frescas, verduras, domicilios, Don Mariano, fruver, mercado de barrio, Cedritos, calidad, productos frescos"
+      content="supermercado bogotá, frutas frescas, verduras, domicilios, Don Mariano, fruver, mercado de barrio, Cedritos, Belmira, Javeriana, Salitre, Milenta, calidad, productos frescos, supermercado domicilios bogotá, tienda de barrio bogotá, fruver bogotá"
     />
     <meta name="author" content="Tiendas Don Mariano" />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO Local / Geográfico -->
+    <meta name="geo.region" content="CO-DC" />
+    <meta name="geo.placename" content="Bogotá" />
+    <meta name="geo.position" content="4.7110;-74.0721" />
+    <meta name="ICBM" content="4.7110, -74.0721" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#fff0de" />
+    <meta name="msapplication-TileColor" content="#fff0de" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/LogoDon.png" />
     <link rel="apple-touch-icon" href="/LogoDon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -53,18 +67,23 @@ const ogImage = new URL("/og-image.png", Astro.site); // Necesitarás crear esta
     <!-- Title -->
     <title>{title}</title>
 
-    <!-- Schema.org LocalBusiness JSON-LD -->
+    <!-- Preconnect para rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org GroceryStore JSON-LD -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "GroceryStore",
         name: "Tiendas Don Mariano",
         image: ogImage.toString(),
         description:
-          "Supermercado de barrio en Bogotá con las mejores frutas y verduras frescas. Atención personalizada y domicilios.",
+          "Supermercado de barrio en Bogotá con las mejores frutas y verduras frescas. Atención personalizada, productos de calidad y domicilios rápidos por WhatsApp. 5 sedes en Bogotá.",
         address: {
           "@type": "PostalAddress",
+          streetAddress: "Av. Caracas #140-25",
           addressLocality: "Bogotá",
           addressRegion: "Cundinamarca",
           addressCountry: "CO",
@@ -75,7 +94,7 @@ const ogImage = new URL("/og-image.png", Astro.site); // Necesitarás crear esta
           longitude: "-74.0721",
         },
         url: canonicalURL.toString(),
-        telephone: "+57-XXX-XXX-XXXX",
+        telephone: "+573138485561",
         priceRange: "$$",
         openingHoursSpecification: [
           {
@@ -89,8 +108,8 @@ const ogImage = new URL("/og-image.png", Astro.site); // Necesitarás crear esta
               "Saturday",
               "Sunday",
             ],
-            opens: "07:00",
-            closes: "20:00",
+            opens: "06:00",
+            closes: "22:00",
           },
         ],
         aggregateRating: {
@@ -100,8 +119,35 @@ const ogImage = new URL("/og-image.png", Astro.site); // Necesitarás crear esta
           bestRating: "5",
           worstRating: "1",
         },
-        servesCuisine: "Frutas y Verduras",
-        paymentAccepted: "Cash, Credit Card, Debit Card",
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Productos disponibles",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: { "@type": "Product", name: "Frutas frescas" },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: { "@type": "Product", name: "Verduras frescas" },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: { "@type": "Product", name: "Abarrotes" },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: { "@type": "Product", name: "Lácteos" },
+            },
+          ],
+        },
+        numberOfEmployees: { "@type": "QuantitativeValue", value: "30" },
+        foundingDate: "2010",
+        areaServed: {
+          "@type": "City",
+          name: "Bogotá",
+        },
+        paymentAccepted: "Cash, Credit Card, Debit Card, Nequi, Daviplata",
         currenciesAccepted: "COP",
       })}
     />

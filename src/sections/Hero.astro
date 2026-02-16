@@ -1,12 +1,12 @@
 ---
 // Importar las imágenes de frutas
 import { Image } from "astro:assets";
-import fruta1 from "../assets/Frutas_Tienda/WhatsApp Image 2025-11-12 at 7.41.57 PM.jpeg";
-import fruta2 from "../assets/Frutas_Tienda/WhatsApp Image 2025-11-12 at 7.41.58 PM.jpeg";
 import fruta3 from "../assets/Frutas_Tienda/frutas3.jpeg";
 import fruta4 from "../assets/Frutas_Tienda/frutas4.jpeg";
 import fruta5 from "../assets/Frutas_Tienda/frutas5.jpeg";
 import fruta6 from "../assets/Frutas_Tienda/frutas6.jpeg";
+import fruta1 from "../assets/Frutas_Tienda/WhatsApp Image 2025-11-12 at 7.41.57 PM.jpeg";
+import fruta2 from "../assets/Frutas_Tienda/WhatsApp Image 2025-11-12 at 7.41.58 PM.jpeg";
 
 const carouselImages = [fruta1, fruta2, fruta3, fruta4, fruta5, fruta6];
 ---
@@ -37,7 +37,7 @@ const carouselImages = [fruta1, fruta2, fruta3, fruta4, fruta5, fruta6];
   </div>
 
   <!-- Overlay oscuro -->
-  <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
 
   <!-- Contenido Text -->
   <div class="relative z-10 text-center px-6">
@@ -46,14 +46,18 @@ const carouselImages = [fruta1, fruta2, fruta3, fruta4, fruta5, fruta6];
     >
       Don Mariano
     </h1>
-    <p
-      class="mt-4 text-base md:text-lg max-w-xl mx-auto text-white font-semibold text-pretty"
+    <div
+      class="bg-brown-600/30 border-1 border-brown-600/50 rounded-lg backdrop-blur-sm"
     >
-      <span class="text-gold-500">Un supermercado de barrio diferente.</span> Frutas,
-      verduras y todo para su mercado... ¡como si usted mismo lo hubiera escogido!<br
-      />
-      Mejor dicho, le mandamos el mercado como si fuera pa' la suegra.
-    </p>
+      <p
+        class="mt-4 text-base md:text-lg max-w-xl mx-auto text-white font-semibold text-pretty"
+      >
+        <span class="text-gold-500">Un supermercado de barrio diferente.</span> Frutas,
+        verduras y todo para su mercado... ¡como si usted mismo lo hubiera escogido!<br
+        />
+        Mejor dicho, le mandamos el mercado como si fuera pa' la suegra.
+      </p>
+    </div>
     <a
       href="#Contact"
       class="mt-6 inline-block bg-yellow-400 text-black font-semibold py-3 px-6 rounded-lg hover:bg-yellow-500 transition"

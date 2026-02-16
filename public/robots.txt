@@ -1,0 +1,6 @@
+# Robots.txt - Tiendas Don Mariano
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.tiendasdonmariano.com/sitemap-index.xml

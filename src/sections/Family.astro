@@ -1,0 +1,123 @@
+---
+// Importamos los estilos de Swiper
+import "swiper/css";
+import "swiper/css/pagination";
+import Image from "astro/components/Image.astro";
+import equi1 from "../assets/Equipo/equi1.jpeg";
+import equi2 from "../assets/Equipo/equi2.jpeg";
+import equi3 from "../assets/Equipo/equi3.jpeg";
+import equi4 from "../assets/Equipo/equi4.jpeg";
+import equi5 from "../assets/Equipo/equi5.jpeg";
+---
+
+<section
+  class="bg-[#fdf6ec] min-h-[500px] flex items-center justify-center p-8 md:p-16"
+>
+  <div
+    class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+  >
+    <div
+      class="relative w-full rounded-2xl overflow-hidden shadow-xl aspect-[4/3]"
+    >
+      <div class="swiper mySwiper h-full">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <Image
+              src={equi1}
+              alt="Equipo Don Mariano"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="swiper-slide">
+            <Image
+              src={equi2}
+              alt="Local Don Mariano"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="swiper-slide">
+            <Image
+              src={equi3}
+              alt="Local Don Mariano"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="swiper-slide">
+            <Image
+              src={equi4}
+              alt="Local Don Mariano"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="swiper-slide">
+            <Image
+              src={equi5}
+              alt="Local Don Mariano"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div
+        class="flex items-center gap-2 text-[#d4a34d] font-bold tracking-widest text-sm uppercase"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+          ></path>
+        </svg>
+        NUESTRO EQUIPO
+      </div>
+
+      <h2
+        class="text-3xl md:text-4xl font-serif font-extrabold text-[#3d1f14] leading-tight"
+      >
+        Una Familia <br /> a Tu Servicio
+      </h2>
+
+      <p class="text-[#7a6b63] text-lg leading-relaxed max-w-md font-light">
+        Trabajamos con dedicación y cariño para que siempre encuentres lo que
+        necesitas. Porque en <strong>Don Mariano</strong>, tú eres parte de la
+        familia.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination, Autoplay } from "swiper/modules";
+
+  // Inicializar Swiper
+  new Swiper(".mySwiper", {
+    modules: [Pagination, Autoplay],
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>
+
+<style>
+  /* Personalización de los puntos del carrusel para que combinen con el diseño */
+  :global(.swiper-pagination-bullet-active) {
+    background-color: #d4a34d !important;
+  }
+</style>

@@ -2,10 +2,11 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo_letter.png";
 import MenuIcon from "./Icons/Menu.astro";
+import Phone from "./Icons/Phone.astro";
 ---
 
 <header
-  class="bg-[#fff0de] w-full h-28 flex flex-row items-center justify-between p-10 sticky top-0 z-20 backdrop-blur-xl"
+  class="bg-[#fff0de] w-full md:h-20 lg:h-28 flex flex-row items-center justify-between p-5 md:p-10 sticky top-0 z-20 backdrop-blur-xl"
   id="header"
 >
   <button
@@ -20,7 +21,7 @@ import MenuIcon from "./Icons/Menu.astro";
     src={logo}
     width={140}
     height={110}
-    alt="Logo don mario"
+    alt="Logo Tiendas Don Mariano - Supermercado de barrio en Bogotá"
     class="w-[140px] h-[110px]"
   />
 
@@ -28,21 +29,22 @@ import MenuIcon from "./Icons/Menu.astro";
     class="text-black xl:text-lg hidden lg:flex font-bold flex-row gap-x-10 w-full justify-center"
   >
     <a href="#">Inicio</a>
-    <a href="#Conocenos">Conócenos</a>
+    <a href="#WhyUs">Conócenos</a>
     <a href="#Contact">Contáctanos</a>
   </nav>
 
   <a
     class="bg-gold-500 text-black
     px-4 py-2 rounded-md font-bold
-    hover:bg-gold-600 w-40
+    hover:bg-gold-600 w-52
     text-center
     transition-colors duration-300 hidden lg:block
     cursor-pointer
     text-sm"
-    href="#Conocenos"
+    href="#call"
   >
-    Pedir ahora
+    <Phone class="size-4 text-black fill-current inline-block mr-2" />
+    Pedir a Domicilio
   </a>
 </header>
 
@@ -87,7 +89,7 @@ import MenuIcon from "./Icons/Menu.astro";
         Inicio
       </a>
       <a
-        href="#Conocenos"
+        href="#WhyUs"
         class="text-lg font-bold text-gray-900 hover:text-gold-500 transition-colors py-2 border-b border-gray-200 mobile-menu-link"
       >
         Conócenos
@@ -99,7 +101,7 @@ import MenuIcon from "./Icons/Menu.astro";
         Reseñas
       </a>
       <a
-        href="#Contact"
+        href="#call"
         class="text-lg font-bold text-gray-900 hover:text-gold-500 transition-colors py-2 border-b border-gray-200 mobile-menu-link"
       >
         Contáctanos
@@ -107,10 +109,11 @@ import MenuIcon from "./Icons/Menu.astro";
 
       <!-- CTA Button -->
       <a
-        href="#Conocenos"
+        href="#call"
         class="bg-gold-500 text-black px-6 py-3 rounded-md font-bold hover:bg-gold-600 text-center transition-colors duration-300 mt-4 mobile-menu-link"
       >
-        Pedir ahora
+        <Phone class="size-4 text-black fill-current inline-block mr-2" />
+        Pedir a Domicilio
       </a>
     </nav>
   </div>

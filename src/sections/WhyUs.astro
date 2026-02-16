@@ -1,5 +1,6 @@
 ---
 import Market from "../components/Icons/Market.astro";
+import Phone from "../components/Icons/Phone.astro";
 import Shield from "../components/Icons/Shield.astro";
 import Truck from "../components/Icons/Truck.astro";
 import WhatsApp from "../components/Icons/WhatsApp.astro";
@@ -8,7 +9,7 @@ const features = [
     icon: Shield,
     title: "Enviamos lo que pides",
     description:
-      "Si pidió un producto maduro, no le llega verde. Así de sencillo.",
+      "Si pediste un producto maduro, no te llega verde. Así de sencillo.",
     color: "bg-brown-600",
   },
   {
@@ -32,10 +33,10 @@ const features = [
 ];
 ---
 
-<section class="py-16 px-4 md:px-6 bg-gradient-to-r bg-[#FBF8EF]">
+<section class="py-16 px-4 md:px-6 bg-gradient-to-r bg-[#FBF8EF]" id="WhyUs">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
         ¿Por qué elegir Don Mariano?
       </h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -43,7 +44,7 @@ const features = [
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-x-1 gap-y-8">
+    <div class="grid md:grid-cols-4 gap-x-3 gap-y-8">
       {
         features.map((feature) => (
           <div>
@@ -61,6 +62,15 @@ const features = [
           </div>
         ))
       }
+    </div>
+    <div class="flex justify-center items-center">
+      <a
+        href="#call"
+        class="w-fit bg-gold-500 text-black px-6 py-4 rounded-md font-bold hover:bg-gold-600 text-center transition-colors duration-300 mt-4 mobile-menu-link"
+      >
+        <Phone class="size-4 text-black fill-current inline-block mr-2" />
+        Hacer Pedido Ahora
+      </a>
     </div>
   </div>
 </section>
